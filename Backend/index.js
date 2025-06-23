@@ -23,11 +23,13 @@ app.use(cors())
 const port=process.env.port || 3000
 const uri=process.env.MONGO_URL
 
-try{
-    mongoose.connect(uri).then(console.log("Connected...."))
-}catch(err){
-    console.log("Error: ",err);
-}
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("Connected to MongoDB Atlas"))
+.catch(err => console.error("MongoDB connection error:", err));
+
 
 app.use(dashboardRoute)
 
