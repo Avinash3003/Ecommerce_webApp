@@ -13,6 +13,7 @@ import flipkartimage from '../images/flipkart-logo.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
+
 function Header() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -21,12 +22,14 @@ function Header() {
   const [email,setEmail]=useState("");
   const [username,setUsername]=useState("");
   const [cartLength,setCartLength]=useState(0);
+  
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
   useEffect(()=>{
     const fetchUser=async()=>{
       try{
-        const response=await axios.get("http://localhost:4000/",{
+        const response=await axios.get(baseUrl,{
           headers:{
             Authorization:`Bearer ${token}`
           }

@@ -15,6 +15,9 @@ const Signup = () => {
     const [showOTPField, setShowOTPField] = useState(false);
     const [otpGenerated,setOTPGenerated]=useState(0);
 
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
+
     const nav=useNavigate();
 
     const handleVerifyClick = async () => {
@@ -27,7 +30,7 @@ const Signup = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:4000/send-otp", { email });
+            const response = await axios.post(`${baseUrl}/send-otp`, { email });
             setSuccessMsg(response.data.message);
             setTimeout(()=>{
                 setSuccessMsg("")
@@ -42,7 +45,7 @@ const Signup = () => {
 
     const handleOTPSubmit = async () => {
         try {
-            const response = await axios.post("http://localhost:4000/verify-otp", { email,otp, otpGenerated });
+            const response = await axios.post(`${baseUrl}/verify-otp`, { email,otp, otpGenerated });
             // alert(response.data.message);
             setSuccessMsg(response?.data?.message)
             setTimeout(()=>{
@@ -107,7 +110,7 @@ const Signup = () => {
 
         try {
             console.log("Entered")
-            const response = await axios.post("http://localhost:4000/signup",payload);
+            const response = await axios.post(`${baseUrl}/signup`,payload);
             setSuccessMsg(response?.data?.message); 
             setErrorMsg('');
             setShowOTPField(false);

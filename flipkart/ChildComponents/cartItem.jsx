@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import axios from 'axios'
 
 function CartItem({ cartItemDetails, itemQuantity, onRemove, onChangePriceDetails }) {
     const [quantity, setQuantity] = useState(itemQuantity)

@@ -15,12 +15,13 @@ export function Login() {
   const [correctSpan, setCorrectSpan] = useState("")
   const navigate = useNavigate();
 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
 
 
   const handleSubmit=async()=> {
 
     try {
-      const response = await axios.post("http://localhost:4000/login", { email: email, password: password })
+      const response = await axios.post(`${baseUrl}/login`, { email: email, password: password })
       console.log("try", response?.data);
       setCorrectSpan(response?.data.message)
       

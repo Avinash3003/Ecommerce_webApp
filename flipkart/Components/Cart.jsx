@@ -7,6 +7,8 @@ import { products } from '../data/Data';
 
 function Cart() {
     const [userCartData, setuserCartData] = useState(null);
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
     
 
 
@@ -17,7 +19,7 @@ function Cart() {
         const fetchCartData = async () => {
             const user = localStorage.getItem("user")
             try {
-                const response = await axios.post('http://localhost:4000/cartdata', { user: user });
+                const response = await axios.post(`${baseUrl}/cartdata`, { user: user });
                 console.log(response?.data?.userCartData);
                 setuserCartData(response?.data?.userCartData)
             } catch (err) {
@@ -31,7 +33,7 @@ function Cart() {
 
     const handleRemoveItem = async (user, ref_id) => {
         try {
-            const response = await axios.post('http://localhost:4000/removeitem', { user: user, ref_id: ref_id })
+            const response = await axios.post(`${baseUrl}/removeitem`, { user: user, ref_id: ref_id })
             console.log("Remove Item: ", response?.data)
             setuserCartData(prevState => ({
                 ...prevState,
@@ -47,7 +49,7 @@ function Cart() {
     const handlePriceDetailsChange = async (user,quantity,ref_id) => {
 
         try {
-            const response = await axios.post('http://localhost:4000/changequantity', { user: user, quantity: quantity, ref_id:ref_id })
+            const response = await axios.post(`${baseUrl}/changequantity`, { user: user, quantity: quantity, ref_id:ref_id })
             console.log("quantitychange", response?.data)
 
             setuserCartData(prevState=>({

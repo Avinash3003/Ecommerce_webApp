@@ -15,6 +15,9 @@ function ForgotPage() {
     const [errSpan, setErrSpan] = useState("");
     const [successSpan, setSuccessSpan] = useState("");
 
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
+
 
     const handleOTPClick =async()=>{
 
@@ -24,7 +27,7 @@ function ForgotPage() {
         }
 
         try{
-            const response = await axios.post('http://localhost:4000/send-otp',{email,text:"forget"})
+            const response = await axios.post(`${baseUrl}/send-otp`,{email,text:"forget"})
             // console.log(response?.data);
             setSuccessSpan(response?.data?.message)
             setOTPGenerated(response?.data?.otpGenerated)
@@ -51,7 +54,7 @@ function ForgotPage() {
 
         try{
 
-            const response = await axios.post('http://localhost:4000/verify-otp',{email,otp,otpGenerated})
+            const response = await axios.post(`${baseUrl}/verify-otp`,{email,otp,otpGenerated})
             setSuccessSpan(response?.data?.message);
             setTimeout(()=>{
                 setSuccessSpan('');
@@ -78,7 +81,7 @@ function ForgotPage() {
 
         try{
 
-            const response = await axios.post("http://localhost:4000/update-password",{email,password});
+            const response = await axios.post(`${baseUrl}/update-password`,{email,password});
             setSuccessSpan(response?.data?.message)
             setTimeout(()=>{
                 nav('/login')
