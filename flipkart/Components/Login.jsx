@@ -150,7 +150,7 @@ export function Login() {
             className="!mt-4 text-center font-normal"
           >
             Not registered?{" "}
-            <span onClick={()=> navigate('/signup')} className="font-medium text-gray-900">
+            <span onClick={()=> navigate('/signup')} className="underline font-medium text-gray-900">
               Create account
             </span>
           </Typography>
