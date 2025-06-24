@@ -29,7 +29,7 @@ function Header() {
   useEffect(()=>{
     const fetchUser=async()=>{
       try{
-        const response=await axios.get(baseUrl,{
+        const response=await axios.get(`${baseUrl}/dashboard`,{
           headers:{
             Authorization:`Bearer ${token}`
           }

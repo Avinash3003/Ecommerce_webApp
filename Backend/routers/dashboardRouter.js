@@ -3,7 +3,7 @@ import { dashboardContoller } from '../controllers/dashboardController.js'
 
 const dashboardRoute=express.Router()
 
-dashboardRoute.get('/',dashboardContoller)
+dashboardRoute.get('/dashboard',dashboardContoller)
 
 
 export default dashboardRoute
