@@ -9,8 +9,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import axios from 'axios';
-import flipkartimage from '../images/flipkart-logo.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+// import png from 'public/flipkart-logo.png'
 
 
 
@@ -71,7 +71,7 @@ function Header() {
 
   return (
     <div className='flex justify-around items-center mt-1'>
-      <img src={flipkartimage} className='w-30' />
+      <img src="/images/flipkart-logo.png" className='w-30' />
       {/* <input className='w-50' type='search' placeholder='Search for Products, Brands and More' /> */}
       <div class="relative">
         <input type="search" class="w-3xl bg-sky-100 placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pr-3 pl-10 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Search for Products, Brands and More" />

@@ -1,9 +1,8 @@
 import React,{useState} from 'react'
 import { useParams, useLocation } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
+
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-// import image from '../public/images/newItem'
-// import Header from '../Components/Header';
+
 import axios from 'axios'
 
 
@@ -16,21 +15,24 @@ function ProductInfo() {
     console.log(location)
     const { itemDetails } = location.state
 
-    console.log(itemDetails)
-    console.log(category, subCategory, itemName)  // clothes,men,jeans
+    console.log("Item Details: ",itemDetails)
+    console.log("URL order: ",category, subCategory, itemName)  // clothes,men,jeans
 
     const imageName = String(itemName[0].toUpperCase() + itemName.slice(1,))
-    console.log(imageName)
+    console.log("Img Name",imageName)
+
 
     const [limitSpan,setLimitSpan]=useState("");
 
     const user=localStorage.getItem("user")
 
+    const baseUrl = import.meta.env.VITE_BASE_URL;
+
 
     const cartClick=async()=>{
 
         try{
-            const response=await axios.post('http://localhost:4000/cartadd',{
+            const response=await axios.post(`${baseUrl}/cartadd`,{
                 user:user,
                 itemDetails:itemDetails,
             })
@@ -52,7 +54,7 @@ function ProductInfo() {
             {/* <Header/> */}
             <div className='m-30 flex justify-around '>
                 <div className='w-100 h-80'>
-                    <img className='w-100 h-100 rounded-2xl shadow-lg shadow-gray-500' src={`/images/newItem/${imageName}.jpg`} alt="img"/>
+                    <img className='w-100 h-100 rounded-2xl shadow-lg shadow-gray-500' src={`/images/newItem/${itemDetails.title}.jpg`} alt="img"/>
                     <button onClick={cartClick} className='active:bg-amber-400 w-49 mt-7 mr-2 h-10 font-medium bg-amber-300 rounded-xl' >Add to Cart <AddShoppingCartIcon/></button>
 
                     <button className='w-49 h-10 font-medium bg-amber-500 rounded-xl'>Buy Now</button>
