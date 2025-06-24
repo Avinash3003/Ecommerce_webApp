@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
  
 export const LoginController = async(req,res)=>{
-
+    console.log("login secret: ",process.env.SECRET_KEY)
     const {email, password} = req.body
     console.log(email, password)
     if(!email || !password)

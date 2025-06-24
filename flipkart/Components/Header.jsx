@@ -1,4 +1,3 @@
-// import flipkart from '../images/flipkart-logo.png'
 import Person2Icon from '@mui/icons-material/Person2';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +9,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import axios from 'axios';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-// import png from 'public/flipkart-logo.png'
 
 
 
@@ -29,6 +27,8 @@ function Header() {
   useEffect(()=>{
     const fetchUser=async()=>{
       try{
+        console.log("BaseURL: ",baseUrl)
+        console.log("passing token: ",token)
         const response=await axios.get(`${baseUrl}/dashboard`,{
           headers:{
             Authorization:`Bearer ${token}`
