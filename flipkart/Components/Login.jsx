@@ -150,9 +150,9 @@ export function Login() {
             className="!mt-4 text-center font-normal"
           >
             Not registered?{" "}
-            <a href="/signup" className="font-medium text-gray-900">
+            <span onClick={()=> navigate('/signup')} className="font-medium text-gray-900">
               Create account
-            </a>
+            </span>
           </Typography>
         </form>
       </div>
